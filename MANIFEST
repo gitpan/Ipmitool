@@ -1,5 +1,6 @@
 Changes
-Ipmitool.pm
-MANIFEST
 Makefile.PL
-test.pl
+MANIFEST
+README
+t/Ipmitool.t
+lib/Ipmitool.pm

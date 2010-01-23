@@ -1,21 +1,33 @@
 package Ipmitool;
 
+use 5.010000;
 use strict;
+use warnings;
 use Net::Ping;
 use Data::Dumper;
-use vars qw($VERSION @ISA @EXPORT);
 
 require Exporter;
-require AutoLoader;
 
-@ISA = qw(Exporter AutoLoader);
+our @ISA = qw(Exporter);
+
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
-@EXPORT = qw(
+
+# This allows declaration	use Ipmitool ':all';
+# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
+# will save memory.
+our %EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+our @EXPORT = qw(
 	
 );
-$VERSION = '0.01';
+
+our $VERSION = '0.02';
 
 our %FRU;
 # Preloaded methods go here.
@@ -267,9 +279,12 @@ return(0);
 
 }
 
+
+# Preloaded methods go here.
+
 1;
 __END__
-# Below is the stub of documentation for your module. You better edit it!
+# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
@@ -284,7 +299,6 @@ Ipmitool - Perl interface to the ipmitool.
   %FRU = $i->fru();
   print Dumper($i);
   $i->bmc("info");
-
 
 =head1 DESCRIPTION
 
@@ -304,12 +318,22 @@ This function will access perticular machine's fru information and returns the F
 
 This function prints the bmc information of the machine.
 
-=head1 AUTHOR
-
-Manjunath Kumatagi, Manjunath.Kumatagi@gmail.com
 
 =head1 SEE ALSO
 
-perl(1).
+http://ipmitool.sourceforge.net/manpage.html
+
+=head1 AUTHOR
+
+Manjunath Kumatagi, E<lt>manjunath.kumatagi@gmail.com<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010 by Manjunath Kumatagi
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.10.0 or,
+at your option, any later version of Perl 5 you may have available.
+
 
 =cut
